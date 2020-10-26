@@ -10,13 +10,16 @@ app.get ("/", (req, res) =>
     {
         response.on('data', (d) => 
         {
-            const data = JSON.parse(d);
-            console.log(data);
+            const weatherData = JSON.parse(d);
+            const temp = weatherData.main.temp;
+            const weatherDescription = weatherData.weather[0].description;
+            console.log(temp);
+
+            res.send(`<h1>The temperature in Lucknow is ${temp} degrees Celsius</h1>`);
         });
       
     })
 
-    res.send("Hello to this server");
 })
 
 
